@@ -1,16 +1,39 @@
-# yandex_delivery_robot
+<img width="1354" alt="Снимок экрана 2024-02-08 в 17 16 01" src="https://github.com/MaxiEnergy/SmartLight/assets/58640177/217f9caa-c045-4b21-8cc6-f298f320a624">
 
-A new Flutter project.
+# Delivery Robot
+В этом репозитории содержится код для прошивки ESP32-C3 в рамках проекта модернизации официального игрушечного робота-курьера от Яндекса. Управление роботом реализовано с помощью мобильного приложения в репозитории [DeliveryRobotApp](https://github.com/MaxiEnergy/DeliveryRobotApp) и технологии Bluetooth Low Energy. Подробнее про модернизацию робота-курьера можно прочитать в статье на Хабре.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Содержание
+- [Стек технологий и компонентов](#cтек-технологий-и-компонентов)
+- [Описание функционала](#описание-функционала)
+- [Схема подключения электронных компонентов](#схема-подключения-электронных-компонентов)
+- [Корпус](#корпус)
 
-A few resources to get you started if this is your first Flutter project:
+## Стек технологий и компонентов
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Программная часть
+- Язык программирования C++
+- Среда разработки Arduino IDE
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Аппаратная часть
+- Литий-полимерный аккумулятор 350 mAh
+- Модуль контроллера заряда аккумулятора с защитой TP4056
+- Драйвер двигателей L298N mini
+- ESP32-C3 SuperMini
+- 2 мотора
+- Одноцветные светодиоды робота-курьера
+- Переключатель на роботе-курьере
+
+## Описание функционала
+- Включение и выключение робота-курьера осуществляется с помощью родного переключателя на днище игрушки
+- Включение и выключение светодиодной подсветки робота через мобильное приложение с помощью BLE
+- Управление моторчиками происходит с помощью стрелок в мобильном приложении
+- Поворот робота осуществляется посредством одновременного вращения двух моторов в разные стороны
+
+## Схема подключения электронных компонентов
+<img width="1236" alt="image" src="https://github.com/MaxiEnergy/SmartLight/assets/58640177/620d3f4b-6699-4834-aa00-5b086c41a80f">
+
+## Корпус
+
+
