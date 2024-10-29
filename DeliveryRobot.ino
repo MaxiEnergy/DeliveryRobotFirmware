@@ -106,12 +106,24 @@ void setup() {
     ledcAttachPin(IN3, CHANNEL_IN3);
     ledcAttachPin(IN4, CHANNEL_IN4);
 
+    // Номер ровера
+    int roverNumber = 1; // Задайте номер для вашего ровера, например 1 для "Rover Toy 001"
+
+    // Генерация имени и UUID на основе номера ровера
+    char roverName[12];
+    sprintf(roverName, "Rover Toy %03d", roverNumber);
+    
+    char serviceUUID[37];
+    char characteristicUUID[37];
+    sprintf(serviceUUID, "0000170D-%04d-1000-8000-00805f9b34fb", roverNumber);
+    sprintf(characteristicUUID, "00002A60-%04d-1000-8000-00805f9b34fb", roverNumber);
+
     // Инициализация BLE
-    BLEDevice::init("Yandex Delivery Robot");
+    BLEDevice::init(roverName);
     pServer = BLEDevice::createServer();
     pServer->setCallbacks(new MyServerCallbacks());
-    BLEService* pMoveService = pServer->createService(BLEUUID((uint16_t)0x170D));
-    pMoveCharacteristic = pMoveService->createCharacteristic(BLEUUID((uint16_t)0x2A60), BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE);
+    BLEService* pMoveService = pServer->createService(BLEUUID(serviceUUID));
+    pMoveCharacteristic = pMoveService->createCharacteristic(BLEUUID(characteristicUUID), BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE);
     pMoveCharacteristic->setCallbacks(new MoveCharacteristicCallbacks());
     pMoveService->start();
     BLEAdvertising* pAdvertising = pServer->getAdvertising();
