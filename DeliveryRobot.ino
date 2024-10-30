@@ -40,16 +40,16 @@ class MoveCharacteristicCallbacks : public BLECharacteristicCallbacks {
         if (value.length() > 0) {
             switch (value[0]) {
                 case 0x01: // Влево
-                    ledcWrite(CHANNEL_IN1, 255); // 100% скорость
-                    ledcWrite(CHANNEL_IN2, 0);
-                    ledcWrite(CHANNEL_IN3, 255);
-                    ledcWrite(CHANNEL_IN4, 0);
-                    break;
-                case 0x02: // Вправо
                     ledcWrite(CHANNEL_IN1, 0);
                     ledcWrite(CHANNEL_IN2, 255); 
                     ledcWrite(CHANNEL_IN3, 0);
                     ledcWrite(CHANNEL_IN4, 255);
+                    break;
+                case 0x02: // Вправо
+                    ledcWrite(CHANNEL_IN1, 255); 
+                    ledcWrite(CHANNEL_IN2, 0);
+                    ledcWrite(CHANNEL_IN3, 255);
+                    ledcWrite(CHANNEL_IN4, 0);
                     break;
                 case 0x05: // Назад
                     ledcWrite(CHANNEL_IN1, 255); 
