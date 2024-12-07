@@ -15,8 +15,8 @@
 #define CHANNEL_IN4 3
 
 // Частота ШИМ и разрядность
-const int freq = 5000;
-const int resolution = 8;
+const int freq = 20000;
+const int resolution = 10;
 int ledPin = 10;
 
 bool deviceConnected;
@@ -40,27 +40,27 @@ class MoveCharacteristicCallbacks : public BLECharacteristicCallbacks {
         if (value.length() > 0) {
             switch (value[0]) {
                 case 0x01: // Влево
-                    ledcWrite(CHANNEL_IN1, 0);
-                    ledcWrite(CHANNEL_IN2, 255); 
-                    ledcWrite(CHANNEL_IN3, 0);
-                    ledcWrite(CHANNEL_IN4, 255);
-                    break;
-                case 0x02: // Вправо
-                    ledcWrite(CHANNEL_IN1, 255); 
-                    ledcWrite(CHANNEL_IN2, 0);
-                    ledcWrite(CHANNEL_IN3, 255);
+                    ledcWrite(CHANNEL_IN1, 230);
+                    ledcWrite(CHANNEL_IN2, 0); 
+                    ledcWrite(CHANNEL_IN3, 230);
                     ledcWrite(CHANNEL_IN4, 0);
                     break;
+                case 0x02: // Вправо
+                    ledcWrite(CHANNEL_IN1, 0); 
+                    ledcWrite(CHANNEL_IN2, 230);
+                    ledcWrite(CHANNEL_IN3, 0);
+                    ledcWrite(CHANNEL_IN4, 230);
+                    break;
                 case 0x05: // Назад
-                    ledcWrite(CHANNEL_IN1, 255); 
+                    ledcWrite(CHANNEL_IN1, 230); 
                     ledcWrite(CHANNEL_IN2, 0);
                     ledcWrite(CHANNEL_IN3, 0);
-                    ledcWrite(CHANNEL_IN4, 255);
+                    ledcWrite(CHANNEL_IN4, 230);
                     break;
                 case 0x04: // Вперед
                     ledcWrite(CHANNEL_IN1, 0);
-                    ledcWrite(CHANNEL_IN2, 255); 
-                    ledcWrite(CHANNEL_IN3, 255);
+                    ledcWrite(CHANNEL_IN2, 230); 
+                    ledcWrite(CHANNEL_IN3, 230);
                     ledcWrite(CHANNEL_IN4, 0);
                     break;
                 case 0x00:
